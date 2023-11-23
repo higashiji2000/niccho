@@ -22,5 +22,16 @@ services:
       - "3005:3005"
     volumes:
       - ./web:/web
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/front
+    tty: true
+    # https://github.com/vitejs/vite/discussions/3396
+    command: sh -c "npm install && npm run dev -- --host"
 volumes:
   postgresql-db:
