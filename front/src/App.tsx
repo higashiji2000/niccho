@@ -2,12 +2,20 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+// apollo client setup
+// provider系が増えてきたら、別ファイルに切り出す
+const client = new ApolloClient({
+  uri: "http://localhost:3005/graphql",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -28,7 +36,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </ApolloProvider>
   );
 }
 
