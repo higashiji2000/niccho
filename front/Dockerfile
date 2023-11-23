@@ -8,3 +8,4 @@ RUN npm install --frozen-lockfile
 COPY . .
 
 EXPOSE 3000
+EXPOSE 6006
