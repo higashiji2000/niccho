@@ -11,6 +11,7 @@ erDiagram
     varchar(255) description
     varchar(255) estimated_duration
     varchar(255) password
+    boolean deleted
   }
 
   candidate_time_slots {
